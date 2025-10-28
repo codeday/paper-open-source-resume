@@ -1,0 +1,37 @@
+\documentclass[sigconf]{format/acmart}
+\input{meta/packages}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+\input{meta/conf}
+\acmConference[arXiv Pre-print]{arXiv Pre-print}{N.D.}{Online}
+\acmBooktitle{arXiv Pre-print}
+\acmDOI{(arXiv Pre-print)}
+\acmISBN{(arXiv Pre-print)}
+
+\settopmatter{printacmref=true}
+\begin{document}
+\input{meta/title}
+\input{meta/authors}
+
+\begin{abstract}
+\input{00-abstract}
+\end{abstract}
+
+\input{meta/ccs}
+
+\maketitle
+\input{00-all}
+
+\begin{acks}
+\input{99-acknowledgments}
+\end{acks}
+
+\bibliographystyle{format/ACM-Reference-Format}
+\balance
+\bibliography{tyler}
+
+\end{document}
+\endinput

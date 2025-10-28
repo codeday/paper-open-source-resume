@@ -1,0 +1,43 @@
+\pgfplotstableread[row sep=\\,col sep=&]{
+    construct   & baseline  & agreement & baselineErr   & agreementErr\\
+    intrinsic   & 3.87      & 4.21	    & 0.06          & 0.24 \\
+    attainment  & 3.46      & 4.41      & 0.05          & 0.18 \\
+    utility     & 3.78      & 4.10      & 0.13          & 0.23 \\
+}\valueData
+
+\begin{figure}
+    \centering
+    \hspace{0.6cm}
+    \begin{tikzpicture}
+        \begin{axis}[
+                xbar,
+                symbolic y coords={utility,attainment,intrinsic},
+                ytick=data,
+                xmin=1,
+                xmax=5,
+                y=1.18cm,
+                width=7cm,
+                axis lines = left,
+                enlarge y limits={0.34},
+                nodes near coords={\pgfmathprintnumber\pgfplotspointmeta},
+                nodes near coords align={shift={(0.55cm,0)}},
+                xtick={1,2,3,4,5},
+                xticklabel style={align=center},
+                xmajorgrids=true,
+                reverse legend,
+                legend style={at={(0.5,1.3)},
+                    anchor=north,legend columns=-1
+                    ,inner sep=3pt,column sep=3pt},
+                ]
+            \addplot [fill=gray!30]
+            plot [nodes near coords align={shift={(0.63cm,0)}}, error bars/.cd, x dir=both, x explicit]
+            table[x=agreement,y=construct,x error=agreementErr] {\valueData};
+            \addplot [black]
+            plot [nodes near coords align={shift={(0.5cm,0)}}, error bars/.cd, x dir=both, x explicit]
+            table[x=baseline,y=construct,x error=baselineErr]{\valueData};
+            \legend{viewed agreements,did not view agreements}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Comparison of motivational beliefs about value constructs by hiring manager agreement viewing status: higher indicates more motivated (99\% C.I., $n$ = 650)}    \Description[Bar chart showing motivational beliefs about value constructs]{Bar chart showing motivational beliefs about value constructs by agreement viewing status, with 99\% confidence intervals. Intrinsic and attainment beliefs increased beyond confidence interval bounds after viewing agreements, while utility increased within the bounds.}
+    \label{fig:value}
+\end{figure}

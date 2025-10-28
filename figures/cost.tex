@@ -1,0 +1,45 @@
+\pgfplotstableread[row sep=\\,col sep=&]{
+    construct       & baseline  & agreement & baselineErr   & agreementErr \\
+    effort          & 3.28      & 2.75      & 0.11          & 0.29 \\
+    outside effort  & 3.07      & 2.52      & 0.10          & 0.30  \\
+    opportunity     & 2.46      & 2.33      & 0.07          & 0.28 \\
+    emotional       & 2.11      & 2.28      & 0.08          & 0.28 \\
+}\costData
+
+\begin{figure}
+    \centering
+    \hspace{0.6cm}
+    \begin{tikzpicture}
+        \begin{axis}[
+                xbar,
+                symbolic y coords={emotional,opportunity,outside effort,effort},
+                ytick=data,
+                xmin=1,
+                xmax=5,
+                y=1.1cm,
+                width=7cm,
+                axis lines = left,
+                enlarge y limits={0.15},
+                nodes near coords={\pgfmathprintnumber\pgfplotspointmeta},
+                nodes near coords,
+                xtick={1,2,3,4,5},
+                xticklabel style={align=center},
+                xmajorgrids=true,
+                reverse legend,
+                legend style={at={(0.5,1.2)},
+                    anchor=north,legend columns=-1
+                    ,inner sep=3pt,column sep=3pt},
+                ]
+            \addplot [fill=gray!30]
+            plot [nodes near coords align={shift={(0.8cm,0)}}, error bars/.cd, x dir=both, x explicit]
+            table[x=agreement,y=construct,x error=agreementErr] {\costData};
+            \addplot [black]
+            plot [nodes near coords align={shift={(0.5cm,0)}}, error bars/.cd, x dir=both, x explicit]
+            table[x=baseline,y=construct,x error=baselineErr]{\costData};
+            \legend{viewed agreements,did not view agreements}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Comparison of motivational beliefs about cost constructs by hiring manager agreement viewing status: lower indicates more motivated (99\% C.I., $n$ = 650)}
+    \label{fig:cost}
+    \Description[Bar chart showing motivational beliefs about cost constructs]{Bar chart showing motivational beliefs about cost constructs by agreement viewing status, with 99\% confidence intervals. Effort and outside effort beliefs decreased beyond confidence interval bounds after viewing agreements, while opportunity cost decreased within bounds, and emotional cost increased within bounds.}
+\end{figure}

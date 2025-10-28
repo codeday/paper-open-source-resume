@@ -1,0 +1,55 @@
+\documentclass[sigconf]{format/acmart}
+\input{meta/packages}
+\renewcommand\identifying[1]{(redacted)}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+\input{meta/conf}
+\begin{document}
+\input{meta/title}
+
+\author{Author1}
+\email{email@example.com}
+\affiliation{
+ \institution{Anonymous}
+ \city{Anonymous}
+ \country{Anonymous}
+}
+
+\author{Author2}
+\email{email@example.com}
+\affiliation{
+ \institution{Anonymous}
+ \city{Anonymous}
+ \country{Anonymous}
+}
+
+\author{Author3}
+\email{email@example.com}
+\affiliation{
+ \institution{Anonymous}
+ \city{Anonymous}
+ \country{Anonymous}
+}
+
+\begin{abstract}
+\input{00-abstract}
+\end{abstract}
+
+\input{meta/ccs}
+
+\maketitle
+\input{00-all}
+
+\begin{acks}
+The acknowledgments section has been removed for the dual-anonymous review process.
+\end{acks}
+
+\bibliographystyle{format/ACM-Reference-Format}
+\balance
+\bibliography{tyler}
+
+\end{document}
+\endinput

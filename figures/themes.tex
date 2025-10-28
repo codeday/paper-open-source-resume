@@ -1,0 +1,36 @@
+\pgfplotstableread[row sep=\\,col sep=&]{
+    theme & prevalence \\
+    Persistence & 8 \\
+    Product Sense & 10 \\
+    Curiosity & 9 \\
+    Domain Knowl. & 10 \\
+    Teamwork & 13 \\
+    Initiative & 14 \\
+    Problem Solving & 17 \\
+}\themesData
+
+\begin{figure}
+    \Description[Bar chart showing theme prevalence in hiring manager agreements]{Bar chart showing theme prevalence in hiring manager agreements. Problem solving and initiative were the most common themes, while teamwork and domain knowledge were seen in about half of agreements. Curiosity and product sense were also included in a small number of agreements.}
+    \centering
+    \hspace{0.6cm}
+    \begin{tikzpicture}
+        \begin{axis}[
+                xbar,
+                symbolic y coords={Persistence,Curiosity,Product Sense,Domain Knowl.,Teamwork,Initiative,Problem Solving},
+                ytick=data,
+                xmin=0,
+                xmax=20,
+                xlabel={Number of responses (out of 20)},
+                y=0.6cm,
+                width=7cm,
+                axis lines = left,
+                enlarge y limits={0.1},
+                nodes near coords={\pgfmathprintnumber\pgfplotspointmeta},
+                xticklabel={$\pgfmathprintnumber{\tick}$},
+                ]
+            \addplot [fill=black] table[x=prevalence,y=theme]{\themesData};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Prevalence of themes in hiring manager agreements}
+    \label{fig:themesChart}
+\end{figure}

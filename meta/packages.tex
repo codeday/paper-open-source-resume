@@ -1,0 +1,31 @@
+\usepackage{silence}\SafeMode
+\WarningFilter*{balance}{You have called}
+\WarningFilter*{hyperref}{Token not allowed in a PDF}
+\hbadness=99999
+\vbadness=99999
+
+\usepackage{enumitem}
+\setlist{listparindent=1.25em}
+\usepackage[figuresright]{rotating}
+\usepackage{tabularx}
+\usepackage{balance}
+\usepackage{tikz}
+\usepackage{pgfplots,pgfplotstable}
+\pgfplotsset{compat=1.7}
+\usepgfplotslibrary{statistics}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usetikzlibrary{shapes.geometric, arrows, positioning, patterns}
+\usepackage{microtype}
+
+\usepackage{newfloat}
+\DeclareFloatingEnvironment[
+    fileext=loa,
+    listname={List of Appendices},
+    name=Appendix,
+    placement={!ht},
+    within=none,
+]{floatappendix}
+
+\newcommand\identifying[1]{#1}
